@@ -6,7 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>hooks-cloudMusic</title>
 </head>
+<style>
+*{
+  margin: 0;
+  padding:0;
+}
+</style>
 <body>
   <div id='root'></div>
 </body>
 </html>
+<script>
+  (function setRootFontSize(){
+    let rootEle = document.getElementsByTagName('html')[0];
+    let deviceWidth = window.screen.width;
+    rootEle.style.fontSize = (deviceWidth / 7.5)+'px';
+  })();
+</script>

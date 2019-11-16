@@ -28,12 +28,20 @@ module.exports = {
         },
         exclude: /node_modules/
       },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin(
-      { 
-        filename: 'index.html', 
+      {
+        filename: 'index.html',
         template: 'src/index.html',
         minify: { // 压缩HTML文件
           removeComments: true, // 移除HTML中的注释
