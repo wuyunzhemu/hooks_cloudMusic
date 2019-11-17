@@ -1,4 +1,12 @@
 div{
   font-size: .16rem;
   display: flex;
+  align-items: center;
+  color:white;
+}
+.player{
+  padding: 0 .24rem;
+  width:7.5rem;
+  height:100vh;
+  background: gray;
 }

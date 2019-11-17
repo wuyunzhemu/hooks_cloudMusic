@@ -1,6 +1,6 @@
 import React from 'react';
 import './player.css'
-import PlayerNav from '../../components/playerNav'
+import PlayerNav from '../../components/playerNav/playerNav'
 const Player = (props) => {
    return <div className = 'player'>
       <PlayerNav/>
