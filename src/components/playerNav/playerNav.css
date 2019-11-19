@@ -1,11 +1,13 @@
 .playerNav{
   position:fixed; 
-  left: .24rem;
-  right: .24rem;
+  left: 0;
+  right: 0;
   top:0;
   display:flex;
   height:1rem;
   justify-content:space-between;
+  z-index: 999;
+  padding: 0 .24rem;
 }
 .songInfo{
   margin-left: .2rem;
