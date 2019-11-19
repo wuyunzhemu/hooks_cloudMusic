@@ -9,4 +9,6 @@ div{
   width:7.5rem;
   height:100vh;
   background: gray;
+  overflow: hidden;
+  position: static;
 }
