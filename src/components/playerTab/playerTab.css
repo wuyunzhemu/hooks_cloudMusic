@@ -1,0 +1,12 @@
+.playerTab{
+  position: fixed;
+  bottom: 0;
+  z-index:999;
+  left: 0;
+  right: 0;
+}
+.player-button{
+  height:1.5rem;
+  width: 7.5rem;
+  justify-content: center;
+}
