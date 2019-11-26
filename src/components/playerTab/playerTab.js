@@ -1,5 +1,6 @@
 import React, { useState, createRef } from 'react';
 import './playerTab.css'
+import musicList from '../../mockdata/musicList'
 const PlayerTab = (props) => {
   const [onPlaying, setOnPlaying] = useState(true);
   const musicPlayer = createRef();
@@ -18,7 +19,7 @@ const PlayerTab = (props) => {
     setOnPlaying(!onPlaying);
   }
   return <div className='playerTab'>
-    <audio ref={musicPlayer} autoPlay src="http://m801.music.126.net/20191122222832/f186375614083f107bdaffe5d2566d4d/jdyyaac/045c/075b/000f/36c66f7f6b014eb1994f7ecd81a668df.m4a" />
+    <audio ref={musicPlayer} autoPlay src={`https://music.163.com/song/media/outer/url?id=${musicList[0].id}.mp3`} />
     <div className='player-progressBar'></div>
     <div className='player-button'>
       <svg t="1574175081645" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6830" width="20" height="20"><path d="M84.21 273.16h59.57c86.85 0 162.98 46.56 204.87 116 3.9 6.47 10.7 10.62 18.25 10.62 16.55 0 26.52-18.11 17.99-32.29-49.2-81.78-138.72-136.54-241.12-136.54H84.21c-11.65 0-21.1 9.45-21.1 21.1 0 11.66 9.45 21.11 21.1 21.11z m862.6 468.13L751.53 628.55c-18.06-10.43-40.64 2.61-40.64 23.47v99.48h-9.42c-86.85 0-162.98-46.56-204.87-116-3.9-6.47-10.7-10.62-18.25-10.62-16.55 0-26.52 18.11-17.99 32.29 49.2 81.78 138.72 136.54 241.12 136.54h9.42v83.8c0 20.86 22.58 33.9 40.64 23.47l195.27-112.74c18.06-10.45 18.06-36.52 0-46.95z" p-id="6831" fill="#ffffff"></path><path d="M710.27 273.87v97.17c0 20.86 22.58 33.9 40.64 23.47l195.27-112.74c18.07-10.43 18.07-36.5 0-46.93L750.91 122.09c-18.06-10.43-40.64 2.61-40.64 23.47v86.27c-146.67 8.97-255.16 131.52-295.79 280.5-55.29 153.52-138.82 239.17-270.7 239.17H84.21c-11.65 0-21.1 9.45-21.1 21.1s9.45 21.1 21.1 21.1h59.57c155.4 0 270.7-126.62 312.91-281.37 52.84-146.72 131.59-231.25 253.58-238.46z" p-id="6832" fill="#ffffff"></path></svg>
