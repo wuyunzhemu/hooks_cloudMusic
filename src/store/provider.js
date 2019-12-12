@@ -1,7 +1,7 @@
 import React from 'react';
 import providers from './providers';
 
-console.log(providers)
+// console.log(providers)
 const ProvidersComposer = (props) => (
   
   props.providers.reduceRight((children, Parent) => (

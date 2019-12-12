@@ -4,6 +4,7 @@
   z-index:999;
   left: 0;
   right: 0;
+  flex-direction: column;
 }
 .player-button{
   height:1.5rem;
