@@ -3,31 +3,49 @@ const PLAYINGSPEED = 1000; // 播放速度 每秒播放一秒（一倍速）
 let timer = null;
 const ProgressBar = props => {
   // console.log(props);
-  const { onPlaying, duration = 0 } = props;
+  const { onPlaying = false, duration = 0, curSongIndex = 0 ,getPlayTime} = props;
   const [curPlayTime, setCurPlayTime] = useState(0); //当前播放时间（毫秒）
-  console.log(curPlayTime);
+  // console.log(curPlayTime);
+
+  //计时器 播放状态时每秒更新一次当前播放位置
   useEffect(() => {
-    // 如果播放中则注册定时器，否则注销定时器
+    
+    setTimer();
+  }, [onPlaying])
+
+
+  //切换歌曲时 重置当前播放时长及定时器
+  useEffect(()=>{
+    setCurPlayTime(0);
+    if(timer){
+      clearInterval(timer);
+    }
+    setTimer();
+  },[curSongIndex])
+
+  //注册定时器
+  const setTimer = ()=>{
+    // 如果播放中则注册定时器，否则记录当前播放位置(防止暂停引起的一秒计时重置) 注销定时器
     if (onPlaying) {
+      if (curPlayTime >= duration) {
+        clearInterval(timer);
+        timer = null;
+        return ;
+      }
       timer = setInterval(() => {
-        if (curPlayTime >= duration) {
-          clearInterval(timer);
-          timer = null;
-          return;
-        }
         if (onPlaying === true) {
-          console.log('cur:' + curPlayTime)
+          // 批量更新机制会导致状态重复更新为同一个值，setState(fn)则会将函数放入事件队列中，然后按顺序执行，达到更新状态的效果
           setCurPlayTime(curPlayTime => curPlayTime + PLAYINGSPEED)
         }
       }, 1000)
     }
     else{
+      //调用父组件回调获取当前播放位置，用state保存
+      setCurPlayTime(getPlayTime()*1000);
       clearInterval(timer);
       timer = null;
     }
-  }, [onPlaying])
-  //计时器 每秒更新一次当前播放位置
-
+  }
 
   //将毫秒转化为分：秒形式
   const formatTime = (time) => {
