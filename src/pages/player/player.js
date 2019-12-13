@@ -2,12 +2,13 @@ import React from 'react';
 import './player.css'
 import PlayerNav from '../../components/playerNav/playerNav'
 import PlayerTab from '../../components/playerTab/playerTab';
+import PlayerPannel from '../../components/PlayerPannel/PlayerPannel';
 import Provider from '../../store/provider';
 const Player = (props) => {
    return <div className='player'>
       <Provider>
          <PlayerNav />
-         <div className='body'></div>
+         <PlayerPannel/>
          <PlayerTab />
       </Provider>
    </div>
