@@ -1,0 +1,30 @@
+.progressBar{
+  width:7.5rem;
+  padding:.24rem;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.timeText{
+  transform:scale(.9)
+}
+.barWrap{
+  position: relative;
+  margin:0 .15rem;
+  height:.04rem;
+  flex:1;
+  background-color: rgba(255,255,255,.5);
+}
+.barInner{
+  left: 0;
+  position: absolute;
+  background-color: tomato;
+  height:.02rem;
+}
+.barDot{
+  position: absolute;
+  width:.1rem;
+  height:.1rem;
+  border-radius: 50%;
+  background-color: white;
+  right:0;
+}
