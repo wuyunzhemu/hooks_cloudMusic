@@ -20,5 +20,8 @@ function playListReducer(state,action){
   }
 }
 
+function playerReducer(state,action){
+  
+}
 
 export default playListReducer;

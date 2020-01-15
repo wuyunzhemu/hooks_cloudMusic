@@ -1,5 +1,5 @@
 import React,{useReducer} from 'react';
-import playListReducer from './reducer';
+import playListReducer from './reducers';
 import initPlayListState from '../mockdata/musicList';
 
 const playListContext = React.createContext();

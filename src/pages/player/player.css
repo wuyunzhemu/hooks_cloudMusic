@@ -10,5 +10,5 @@ div{
   height:100vh;
   background: gray;
   overflow: hidden;
-  position: static;
+  flex-direction: column;
 }
