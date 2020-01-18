@@ -1,5 +1,5 @@
 
-function playListReducer(state,action){
+const playListReducer = (state,action) => {
   switch(action.type){
     case 'PLAYNEXT':
       //如果当前为最后一首 则播放第一首
@@ -20,8 +20,5 @@ function playListReducer(state,action){
   }
 }
 
-function playerReducer(state,action){
-  
-}
 
 export default playListReducer;

@@ -1,4 +1,5 @@
-const musicList = {
+// 初始播放列表
+export const initPlayList = {
   curSongIndex:0,
   songsList: [
     {
@@ -33,4 +34,10 @@ const musicList = {
     }
   ]
 }
-export default musicList;
+
+// 初始播放状态
+export const initPlayStatus = {
+  onPlaying:false,
+  curTime:0,
+}
+export default {initPlayList,initPlayStatus};

@@ -5,7 +5,7 @@ const Pannel = props =>{
   const { state, dispatch } = useContext(playList.playListContext);
   const curSong = state.songsList[state.curSongIndex];
   return <div className="pannel">
-      <img src={curSong.album.pic} className="album-pic"></img>
+      <img src={curSong.album.pic} className="album-pic" style={{}}></img>
   </div>
 };
 

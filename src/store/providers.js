@@ -1,5 +1,5 @@
 import playList from './playListState/index';
- 
-const providers = [playList.provider];
+import playStatus from './playStatusState/index';
+const providers = [playList.provider,playStatus.provider];
  
 export default providers;

@@ -10,4 +10,8 @@
   width:3rem;
   height:3rem;
   border-radius: 50%;
+  animation: rotatePic 1s timing-function delay iteration-count direction fill-mode;
+}
+@keyframes rotatePic{
+  
 }
