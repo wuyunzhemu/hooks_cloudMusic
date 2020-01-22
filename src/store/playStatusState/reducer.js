@@ -1,9 +1,9 @@
 
-export const playStatusReducer = (state,action)=>{
+const playStatusReducer = (state,action)=>{
   switch(action.type){
-    case 'CHANGECURSTATUS':return Object.assign({} , state , {initPlayStatus:!initPlayStatus}); break;
+    case 'CHANGECURSTATUS':return Object.assign({} , state , {onPlaying:!state.onPlaying});
     default : return state;
   }
 }
 
-export default {playStatusReducer};
+export default playStatusReducer;
