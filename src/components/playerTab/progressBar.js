@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import playStatus from '../../store/playStatusState/index';
 import './progressBar.css'
-const PLAYINGSPEED = 1000; // 播放速度 每秒播放一秒（一倍速）
 let timer = null;
 const ProgressBar = props => {
   // console.log(props);
@@ -32,13 +31,13 @@ const ProgressBar = props => {
     // 如果播放中则注册定时器，否则记录当前播放位置(防止一秒内多次暂停导致状态不更新) 注销定时器
     if (onPlaying === true) {
       timer = setInterval(() => {
-        // 批量更新机制会导致状态重复更新为同一个值，setState(fn)则会将函数放入事件队列中，然后按顺序执行，达到更新状态的效果
-        setCurPlayTime(curPlayTime => {
+        // 由于闭包的存在，若直接setState（curPlayTime+1000）中的curPlayTime永远是0，无法更新状态，setState（fn）以回调函数形式运行，会获取最新state
+        setCurPlayTime((curPlayTime) => {
           console.log(curPlayTime+" > "+ duration)
           if (curPlayTime+1000 >= duration) {
             changeCurSong("NEXT");
             clearInterval(timer);
-            return;
+            return 0;
           }
           return parseInt(getPlayTime() * 1000);
         });
