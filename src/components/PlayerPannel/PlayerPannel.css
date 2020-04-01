@@ -1,6 +1,6 @@
 .pannel{
   flex:1;
-  width:7.5rem;
+  width:100%;
   margin-top:1rem;
   margin-bottom: 2.3rem;
   flex-direction: column;
