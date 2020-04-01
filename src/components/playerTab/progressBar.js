@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext,useRef } from 'react';
 import playStatus from '../../store/playStatusState/index';
+import {throttle} from '../../libs'
 import './progressBar.css'
 let timer = null;
 const ProgressBar = props => {
   // console.log(props);
   const { state:playStatusState,dispatch:statusDispatch } = useContext(playStatus.playStatusContext);
-  const { changeCurSong, onPlaying = false, duration = 0, curSongIndex = 0, getPlayTime } = props;
+  const { changeCurSong, onPlaying = false, duration = 0, curSongIndex = 0, getPlayTime,setPlayTime } = props;
   const [curPlayTime, setCurPlayTime] = useState(0); //当前播放时间（毫秒）
+  const el = useRef()
 
   useEffect(()=>{
 
@@ -33,7 +35,6 @@ const ProgressBar = props => {
       timer = setInterval(() => {
         // 由于闭包的存在，若直接setState（curPlayTime+1000）中的curPlayTime永远是0，无法更新状态，setState（fn）以回调函数形式运行，会获取最新state
         setCurPlayTime((curPlayTime) => {
-          console.log(curPlayTime+" > "+ duration)
           if (curPlayTime+1000 >= duration) {
             changeCurSong("NEXT");
             clearInterval(timer);
@@ -51,6 +52,20 @@ const ProgressBar = props => {
     }
   }
 
+  // 进度条拖动事件
+  const dragBar = (e)=>{
+    if(el.current){
+      let touchX = e.touches[0].clientX;
+      let wrapOffsetX = el.current.getBoundingClientRect().x;
+      let wrapWidth = el.current.getBoundingClientRect().width;
+      // 当拖动超过播放器长度时，当前播放时间等于最大长度
+      let tempTime = touchX-wrapOffsetX<wrapWidth?(touchX-wrapOffsetX)/wrapWidth*duration:duration;
+      tempTime = tempTime>0?tempTime:0;
+      setCurPlayTime(tempTime)
+      setPlayTime(parseInt(curPlayTime/1000))
+    }
+  }
+  
   //将毫秒转化为分：秒形式
   const formatTime = (time) => {
     let sec = parseInt((time / 1000) % 60);
@@ -63,10 +78,10 @@ const ProgressBar = props => {
     }
     return min + ':' + sec;
   }
-
-  return <div className="progressBar">
+  // 容器高度较高，易于触发触摸事件，体验较好
+  return <div onTouchMove={(e)=>throttle(dragBar(e))} className="progressBar">
     <span className="timeText">{formatTime(curPlayTime)}</span>
-    <div className="barWrap">
+    <div ref={el}  className="barWrap">
       <div className="barInner" style={{ width: curPlayTime / duration * 100 + '%' }}>
         <div className="barDot"></div>
       </div>
