@@ -5,12 +5,12 @@ import PlayerTab from '../../components/playerTab/playerTab';
 import PlayerPannel from '../../components/PlayerPannel/PlayerPannel';
 import Provider from '../../store/provider';
 const Player = (props) => {
-   return <div className='player'>
+   return window.innerWidth<750?<div className='player'>
       <Provider>
          <PlayerNav />
          <PlayerPannel/>
          <PlayerTab />
       </Provider>
-   </div>
+   </div>:''
 };
 export default Player;
