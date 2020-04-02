@@ -13,6 +13,11 @@ const PlayerTab = (props) => {
     if (musicPlayer.current) {
       const player = musicPlayer.current; //播放器dom
       if (onPlaying) {
+        console.log(player.readyState)
+        while(player.readyState !== 4){
+          // showLoading
+          console.log('cant play')
+        }
         player.play();
       }
       else {

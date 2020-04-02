@@ -11,6 +11,6 @@ const Player = (props) => {
          <PlayerPannel/>
          <PlayerTab />
       </Provider>
-   </div>:''
+   </div>:'请使用小尺寸设备浏览页面~'
 };
 export default Player;
