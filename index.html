@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>hooks-cloudMusic</title><link rel="shortcut icon" href="favicon.ico"></head><style>*{margin:0;padding:0}</style><body><div id="root"></div><script type="text/javascript" src="main.js"></script></body></html><script>setRootFontSize();
+  window.onresize = ()=>{
+    if(window.innerWidth < 750 && window.innerWidth > 300)
+    setRootFontSize()
+  }
+  function setRootFontSize(){
+    let rootEle = document.getElementsByTagName('html')[0];
+    let deviceWidth = window.innerWidth;
+    rootEle.style.fontSize = (deviceWidth / 7.5)+'px';
+  }</script>
